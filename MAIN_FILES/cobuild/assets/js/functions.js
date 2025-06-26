@@ -297,5 +297,22 @@
         });
 		
 	});	
+
+    /* TEST FUNCTION */
+
+    document.addEventListener("DOMContentLoaded", function () {
+    // Get the button element by ID
+    const button = document.getElementById("myButton");
+
+    // Attach a click event listener
+    button.addEventListener("click", function () {
+            // Call your custom function
+            showMessage();
+        });
+    });
+
+    function showMessage() {
+    document.getElementById("message").textContent = "Button was clicked!";
+}
 	
 }(jQuery));

@@ -1,29 +1,29 @@
 /*global jQuery */
 /* Contents
 // ------------------------------------------------>
-	1.  BACKGROUND INSERT
-	2.  MOBILE MENU
-	3.	HEADER AFFIX
-	4.  COUNTDOWN DATE
-	5.  AJAX MAILCHIMP
-	6.  AJAX CAMPAIGN MONITOR 
-	7.  OWL CAROUSEL
-	8.  MAGNIFIC POPUP
-	9.  MAGNIFIC POPUP VIDEO
-	10. SCROLL TO
-	11. PROGRESS BAR
+    1.  BACKGROUND INSERT
+    2.  MOBILE MENU
+    3.	HEADER AFFIX
+    4.  COUNTDOWN DATE
+    5.  AJAX MAILCHIMP
+    6.  AJAX CAMPAIGN MONITOR 
+    7.  OWL CAROUSEL
+    8.  MAGNIFIC POPUP
+    9.  MAGNIFIC POPUP VIDEO
+    10. SCROLL TO
+    11. PROGRESS BAR
 	
 */
-(function($) {
+(function ($) {
     "use strict";
-  
+
     /* ------------------  Background INSERT ------------------ */
 
     var $bgSection = $(".bg-section");
     var $bgPattern = $(".bg-pattern");
     var $colBg = $(".col-bg");
 
-    $bgSection.each(function() {
+    $bgSection.each(function () {
         var bgSrc = $(this).children("img").attr("src");
         var bgUrl = 'url(' + bgSrc + ')';
         $(this).parent().css("backgroundImage", bgUrl);
@@ -31,7 +31,7 @@
         $(this).remove();
     });
 
-    $bgPattern.each(function() {
+    $bgPattern.each(function () {
         var bgSrc = $(this).children("img").attr("src");
         var bgUrl = 'url(' + bgSrc + ')';
         $(this).parent().css("backgroundImage", bgUrl);
@@ -39,7 +39,7 @@
         $(this).remove();
     });
 
-    $colBg.each(function() {
+    $colBg.each(function () {
         var bgSrc = $(this).children("img").attr("src");
         var bgUrl = 'url(' + bgSrc + ')';
         $(this).parent().css("backgroundImage", bgUrl);
@@ -47,12 +47,12 @@
         $(this).remove();
     });
 
- 
+
     /* ------------------  MOBILE MENU ------------------ */
 
     var $dropToggle = $("ul.dropdown-menu [data-toggle=dropdown]"),
         $module = $(".module");
-    $dropToggle.on("click", function(event) {
+    $dropToggle.on("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
         $(this).parent().siblings().removeClass("open");
@@ -70,17 +70,17 @@
 
 
     /* ------------------ COUNTDOWN DATE ------------------ */
-	
-	 $(".countdown").each(function() {
-        var  $countDown= $(this),
-			countDate = $countDown.data("count-date"),
-			newDate = new Date(countDate);
-		$countDown.countdown({
-			until: newDate,
-			format: "MMMM Do , h:mm:ss a"
-		});
-	});
-       
+
+    $(".countdown").each(function () {
+        var $countDown = $(this),
+            countDate = $countDown.data("count-date"),
+            newDate = new Date(countDate);
+        $countDown.countdown({
+            until: newDate,
+            format: "MMMM Do , h:mm:ss a"
+        });
+    });
+
     /* ------------------  AJAX MAILCHIMP ------------------ */
 
     $('.mailchimp').ajaxChimp({
@@ -101,12 +101,12 @@
 
     /* ------------------  AJAX CAMPAIGN MONITOR  ------------------ */
 
-    $('#campaignmonitor').submit(function(e) {
+    $('#campaignmonitor').submit(function (e) {
         e.preventDefault();
         $.getJSON(
             this.action + "?callback=?",
             $(this).serialize(),
-            function(data) {
+            function (data) {
                 if (data.Status === 400) {
                     alert("Error: " + data.Message);
                 } else { // 200
@@ -116,8 +116,8 @@
     });
 
     /* ------------------ OWL CAROUSEL ------------------ */
-	
-    $(".carousel").each(function() {
+
+    $(".carousel").each(function () {
         var $Carousel = $(this);
         $Carousel.owlCarousel({
             loop: $Carousel.data('loop'),
@@ -125,7 +125,7 @@
             margin: $Carousel.data('space'),
             nav: $Carousel.data('nav'),
             dots: $Carousel.data('dots'),
-			center: $Carousel.data('center'),
+            center: $Carousel.data('center'),
             dotsSpeed: $Carousel.data('speed'),
             responsive: {
                 0: {
@@ -147,12 +147,12 @@
     $imgPopup.magnificPopup({
         type: "image"
     });
-	$('.img-gallery-item').magnificPopup({
-  type: 'image',
-  gallery:{
-    enabled:true
-  }
-});
+    $('.img-gallery-item').magnificPopup({
+        type: 'image',
+        gallery: {
+            enabled: true
+        }
+    });
     /* ------------------  MAGNIFIC POPUP VIDEO ------------------ */
 
     $('.popup-video,.popup-gmaps').magnificPopup({
@@ -177,7 +177,7 @@
             srcAction: 'iframe_src',
         }
     });
-   
+
     /* ------------------ PORTFOLIO FLITER ------------------ */
 
     var $portfolioFilter = $(".portfolio-filter"),
@@ -186,13 +186,13 @@
         $portfolioAll = $("#portfolio-all");
 
     // init Isotope For portfolio
-    protfolioFinder.on("click", function(e) {
+    protfolioFinder.on("click", function (e) {
         e.preventDefault();
         $portfolioFilter.find("a.active-filter").removeClass("active-filter");
         $(this).addClass("active-filter");
     });
     if (portfolioLength > 0) {
-        $portfolioAll.imagesLoaded().progress(function() {
+        $portfolioAll.imagesLoaded().progress(function () {
             $portfolioAll.isotope({
                 filter: "*",
                 animationOptions: {
@@ -204,10 +204,10 @@
             });
         });
     }
-    protfolioFinder.on("click", function(e) {
+    protfolioFinder.on("click", function (e) {
         e.preventDefault();
         var $selector = $(this).attr("data-filter");
-        $portfolioAll.imagesLoaded().progress(function() {
+        $portfolioAll.imagesLoaded().progress(function () {
             $portfolioAll.isotope({
                 filter: $selector,
                 animationOptions: {
@@ -224,45 +224,45 @@
     /* ------------------  SCROLL TO ------------------ */
 
     var aScroll = $('a[data-scroll="scrollTo"]');
-    aScroll.on('click', function(event) {
+    aScroll.on('click', function (event) {
         var target = $($(this).attr('href'));
         if (target.length) {
             event.preventDefault();
             $('html, body').animate({
-                scrollTop: target.offset().top-100
+                scrollTop: target.offset().top - 100
             }, 1000);
-			if($(this).hasClass("menu-item")){
-				$(this).parent().addClass("active");
-				$(this).parent().siblings().removeClass("active");
-			}
+            if ($(this).hasClass("menu-item")) {
+                $(this).parent().addClass("active");
+                $(this).parent().siblings().removeClass("active");
+            }
         }
     });
 
     /* ------------------ PROGRESS BAR ------------------ */
     if ($(".skills").length > 0) {
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             var skillsTop = $(".skills").offset().top - 50,
                 skillsHight = $(this).outerHeight(),
                 wScroll = $(window).scrollTop();
             if (wScroll > skillsTop - 1 && wScroll < skillsTop + skillsHight - 1) {
-                $(".progress-bar").each(function() {
+                $(".progress-bar").each(function () {
                     $(this).width($(this).attr('aria-valuenow') + '%');
                 });
             }
         });
     }
-	
-	if ($(".skills-scroll").length > 0) {
-         $(".progress-bar").each(function() {
-                    $(this).width($(this).attr('aria-valuenow') + '%');
-          });
+
+    if ($(".skills-scroll").length > 0) {
+        $(".progress-bar").each(function () {
+            $(this).width($(this).attr('aria-valuenow') + '%');
+        });
     }
 
     /* ------------------ NAV SPLIT ------------------ */
 
     if ($('.body-scroll').length > 0) {
-        $(window).on("scroll", function() {
-            $('.section').each(function() {
+        $(window).on("scroll", function () {
+            $('.section').each(function () {
                 var sectionID = $(this).attr("id"),
                     sectionTop = $(this).offset().top - 100,
                     sectionHight = $(this).outerHeight(),
@@ -276,18 +276,18 @@
             });
         });
     }
-  
-	/* ------------------ GOOGLE MAP ------------------ */
-	$(".googleMap").each(function() {
-		var $gmap = $(this);
-	$gmap.gMap({
+
+    /* ------------------ GOOGLE MAP ------------------ */
+    $(".googleMap").each(function () {
+        var $gmap = $(this);
+        $gmap.gMap({
             address: $gmap.data('map-address'),
             zoom: $gmap.data('map-zoom'),
             maptype: $gmap.data('map-type'),
             markers: [{
                 address: $gmap.data('map-address'),
                 maptype: $gmap.data('map-type'),
-				html: $gmap.data('map-info'),
+                html: $gmap.data('map-info'),
                 icon: {
                     image: "assets/images/gmap/maker.png",
                     iconsize: [41, 54],
@@ -295,24 +295,34 @@
                 }
             }]
         });
-		
-	});	
+
+    });
 
     /* TEST FUNCTION */
 
     document.addEventListener("DOMContentLoaded", function () {
-    // Get the button element by ID
-    const button = document.getElementById("myButton");
+        // Get the button element by ID
+        const button = document.getElementById("myButton");
 
-    // Attach a click event listener
-    button.addEventListener("click", function () {
+        // Attach a click event listener
+        button.addEventListener("click", function () {
             // Call your custom function
             showMessage();
         });
     });
 
     function showMessage() {
-    document.getElementById("message").textContent = "Button was clicked!";
-}
-	
+        document.getElementById("message").textContent = "Button was clicked!";
+    }
+    
+    document.querySelectorAll(".faq-question").forEach(button => {
+        button.addEventListener("click", () => {
+            const answer = button.nextElementSibling;
+            const isVisible = answer.style.display === "block";
+            document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "none");
+            answer.style.display = isVisible ? "none" : "block";
+        });
+    });
+
+
 }(jQuery));

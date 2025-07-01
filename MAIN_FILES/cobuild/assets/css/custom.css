@@ -1,3 +1,4 @@
+/*-----FAQ-----*/
 .faq {
   max-width: 800px;
   margin: 0 auto;
@@ -26,8 +27,9 @@
   color: #555;
 }
 
+/*-----Pricing-----*/
 .pricing-card {
-  background-color: black;
+  background-color: gray;
   color: white;
   padding: 30px;
   border-radius: 8px;
@@ -54,4 +56,47 @@
 .pricing-card ul li {
   margin: 5px 0;
   font-size: 14px;
+}
+
+/*------------------------------------*\
+    #COLORS
+\*------------------------------------*/
+.color-heading {
+	color: #333333 !important;
+}
+
+.color-theme {
+	color: #0096FF !important;
+}
+
+.color-white {
+	color: #ffffff !important;
+}
+
+.color-gray {
+	color: #f9f9f9 !important;
+}
+
+
+/*------------------------------------*\
+    #BACKGROUNDS
+\*------------------------------------*/
+.bg-theme {
+	background-color: #0096FF !important;
+}
+
+.bg-gray {
+	background-color: #f9f9f9 !important;
+}
+
+.bg-gray2 {
+	background-color: #f8f8f8 !important;
+}
+
+.bg-white {
+	background-color: #ffffff !important;
+}
+
+.bg-dark {
+	background-color: #333333 !important;
 }

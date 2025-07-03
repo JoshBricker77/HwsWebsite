@@ -22,7 +22,7 @@
 }
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
   font-family: Flaticon;
         font-size: 50px;
 font-style: normal;
@@ -80,3 +80,10 @@ margin-left: 0;
 .flaticon-wall:before { content: "\f12f"; }
 .flaticon-wheelbarrow:before { content: "\f130"; }
 .flaticon-wrench:before { content: "\f131"; }
+
+/* Hero section background image */
+#hero.landing-hero {
+  background: url('../images/hero/HeroBG.png') center center/cover no-repeat;
+  min-height: 100vh;
+  background-position-y: 100%;
+}
